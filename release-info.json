@@ -1,0 +1,34 @@
+{
+  "tag": "ios-materials-validation-2026-10-25",
+  "publisher": "Edip Ahmet Taskin",
+  "app_version": "1.0.0",
+  "app_build": "1",
+  "candidate_bundle_id": "org.geoclass.validation.build",
+  "candidate_binary_sha256": "0ef2b433da2596c3a13e146dbb92980294c20c3d1b95f5fc0037878c3ef0add8",
+  "production_identity": false,
+  "published": false,
+  "files": [
+    {
+      "file": "ios-materials-validation-2026-10-25-library-sources.tar",
+      "bytes": 578457600,
+      "sha256": "5b42f9acd9760ada17bc108e748b20839694d04f8d659dc6239fedc4cb197476",
+      "url": "https://github.com/razoridunos/razoridunos.github.io/releases/download/ios-materials-validation-2026-10-25/ios-materials-validation-2026-10-25-library-sources.tar"
+    },
+    {
+      "file": "ios-materials-validation-2026-10-25-application-inputs.tar.gz",
+      "bytes": 68292150,
+      "sha256": "93b1bcbf99c31a072fa413b5e07c3c04ce210c03187ec14096820410596e76c0",
+      "url": "https://github.com/razoridunos/razoridunos.github.io/releases/download/ios-materials-validation-2026-10-25/ios-materials-validation-2026-10-25-application-inputs.tar.gz"
+    },
+    {
+      "file": "ios-materials-validation-2026-10-25-instructions-notices.tar.gz",
+      "bytes": 243117,
+      "sha256": "3dac12d6fb40c55b38f6d2c39b55a129e3b4e2461b27e4310d9a11c1d13a2fb1",
+      "url": "https://github.com/razoridunos/razoridunos.github.io/releases/download/ios-materials-validation-2026-10-25/ios-materials-validation-2026-10-25-instructions-notices.tar.gz"
+    }
+  ],
+  "qt_source_archives": 10,
+  "native_source_files": 50169,
+  "compiled_inputs": 243,
+  "limits": "Local package, not a signed archive or legal approval. Regenerate from the final distributed binary. No modified-Qt QA or website publication."
+}

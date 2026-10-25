@@ -1,0 +1,78 @@
+GEOCLASS iOS LIBRARY BUILD INFORMATION
+
+TARGET
+iOS device arm64, deployment target 17.0; Qt 6.10.3 static; C++17 application;
+MapLibre Metal backend. macOS is an internal test target, not this release.
+The candidate was built with Xcode 27.1 (27A9275), iPhoneOS SDK 27.1. Those
+compiler versions are candidate provenance, not a promise about arbitrary SDKs.
+Recipient must obtain Xcode/Apple SDKs under Apple's terms separately.
+
+QT
+sources/qt contains original Qt 6.10.3 submodule archives and their inventory.
+Extract each into its own source directory. qtbase/configure and each module's
+configure.cmake/CMakeLists.txt are supplied in the archives. Installed records
+include config_<module>.opt, config_<module>.summary, qconfig.pri, qmodule.pri
+and sha1s.txt. These are exact upstream installation records, not commands to
+paste: /Users/qt/... paths, sccache and upstream SBOM tooling refer to Qt's CI.
+Substitute your local paths; do not create that user's directories.
+
+For an iOS source build follow Qt's platform instructions:
+https://doc.qt.io/qt-6.10/ios-building-from-source.html
+https://doc.qt.io/qt-6.10/configure-options.html
+
+Supply a Qt 6.10.3 macOS host-tools installation via QT_HOST_PATH. Configure
+qtbase with the iOS toolchain, static libraries, device arm64, deployment 17.0,
+and a separate install prefix. Configure the dependent source modules against
+that qtbase using its bin/qt-configure-module, then cmake --build / --install.
+Use the supplied installed configuration summaries to match features, private
+interfaces and bundled libraries. Linker recipe kit.json is the exact required
+library/plugin/resource list. qtdeclarative, qtshadertools and qttools host
+generators must be the matching version. Do not substitute Qt 5 or a different
+private-API build. A bit-for-bit Qt rebuild is not claimed by this guide; no
+user-modified Qt build/QA has been performed or promised.
+
+NATIVE LIBRARIES
+Extract sources/geoclass-native-sources.tar.gz into an empty working directory.
+The source layout is:
+  PROJ/                 (9.6.0 including local source snapshot)
+  maplibre-native-qt/   (full local Qt/native/vendor source snapshot)
+  sqlite-amalgamation/  (source and headers, SQLITE_VERSION in sqlite3.h)
+  Geoclass/third_party/minizip-ng-4.2.2/
+  Geoclass/tools/       (only the named library build helpers)
+  Geoclass/build/apple/downloads/tiff-4.7.2.tar.xz
+
+From the extracted Geoclass directory:
+  export GEOCLASS_QT_ROOT=/path/to/Qt/6.10.3
+  bash tools/build_apple_proj_with_grids.sh ios-device-arm64
+  bash tools/build_apple_maplibre.sh ios-device-arm64
+
+Install CMake >=3.30 and Ninja, and ensure their binaries are on PATH. ccache is
+optional. Scripts use xcrun to select the active Apple SDK; DEVELOPER_DIR can be
+set through GEOCLASS_XCODE_DIR. The scripts preserve the build options used for
+PROJ, SQLite RTREE/metadata/thread safety, TIFF and MapLibre Metal/Qt Location.
+TIFF's original pinned archive is supplied, avoiding its download step.
+The snapshot already includes library fixes; no application C++ source is
+needed to rebuild these external libraries. SOURCE_FILES.json lists exact bytes.
+
+MINIZIP
+The supplied minizip source is the pinned 4.2.2 snapshot. The application's
+minizip archive is also a compiled input in the relink kit. To rebuild it use
+an iOS CMake toolchain and the flags in Geoclass/tools/apple-kmz.cmake:
+static, MZ_DECOMPRESS_ONLY=ON, MZ_ZLIB=ON, MZ_ZLIB_FLAVOR=zlib;
+the listed optional codecs/crypto/fetch/test features are OFF. AppleKmz is a
+Geoclass adapter supplied as a compiled input, not an exported app source.
+
+OTHER COMPONENTS
+Original notices identify GeographicLib, Nokia Qt Components, Open Sans,
+MapLibre's vendored components and Google SDK third parties. Their original
+licences govern them. Qt-ThirdParty-Notices.txt is generated from linked SBOM
+dependencies, not from an assumption that all Qt components share one licence.
+
+GOOGLE SDK
+Obtain GoogleMobileAdsSdkiOS-13.11.0 separately under Google's applicable terms.
+The recorded original archive SHA-256 is
+e705195fd4f9048aa245316c2743777d0c689fd1a7e1edf307a54ecf32d70771.
+The rolling download may change; a different hash/version requires review.
+https://developers.google.com/admob/ios/download
+Do not upload a copied SDK to the public materials repository on the basis of
+this guide. The kit's relinker takes --ads pointing to your existing extraction.

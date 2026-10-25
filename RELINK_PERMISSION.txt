@@ -1,0 +1,39 @@
+GEOCLASS — APPLICATION INPUTS: LIBRARY RELINKING PERMISSION
+Publisher: Edip Ahmet Taskin
+Contact: geosoft66@gmail.com
+Materials: https://razoridunos.github.io/geoclass-licenses/
+
+This permission accompanies the publisher-owned compiled Geoclass application
+inputs and bundled application resources identified by the version, build and
+original executable SHA-256 in compiled-kit/kit.json of a materials package
+released by the publisher. It does not apply a general open-source licence to
+the entire Geoclass application or require disclosure of its C++/Swift sources.
+
+The publisher grants recipients permission to copy and use those inputs and
+resources to reproduce the combined work, recombine or relink Geoclass with
+modified, interface-compatible versions of its LGPL-covered libraries, and
+install and execute the resulting combined work. Reverse engineering of
+Geoclass for debugging such library modifications is permitted. The supplied
+inputs may be copied and passed on for these purposes with this permission and
+their original notices. No NDA or disclosure of private library modifications
+is required to exercise these permissions.
+
+Third-party components remain under their own licences. Their modification,
+copying, distribution and other licence rights are not restricted by this
+permission. If another publisher-supplied term would restrict an applicable
+LGPL right or these granted relinking/debugging rights, this permission governs
+to the extent necessary to preserve that right. Apple/Google SDKs and accounts
+are obtained separately under their own applicable terms; no publisher signing
+key or App Store purchase entitlement is supplied.
+
+Other rights in the proprietary application are reserved. These materials do
+not authorize false attribution of a modified build as an official Geoclass
+release or imply publisher endorsement. The publisher does not undertake
+ongoing QA, updates or technical support for recipient modifications. Nothing
+here excludes non-excludable statutory rights or limits third-party licence
+rights.
+
+Local preparation note: this is the proposed permission for the publisher's
+review. Publication of a named materials package with this text is the intended
+grant; preparing this local file does not publish it or certify compliance of
+any App Store distribution arrangement.

@@ -1,0 +1,70 @@
+GEOCLASS iOS — RECIPIENT REBUILD, SIGNING AND INSTALLATION
+
+Ordinary users install the original app from the App Store. The following is
+for recipients exercising library-modification/relinking rights, using their
+own development account, device and data. No publisher private key is needed
+or supplied. This route does not publish a modified app through Geoclass's
+App Store listing and does not transfer its purchase entitlements.
+
+1. Check SHA256SUMS.txt. Read BUILD_LIBRARIES.txt and build the libraries you
+   wish to change, preserving the linked interfaces/configuration. The full
+   library source snapshot includes the publisher's changes. Supply matching
+   Qt host tools, Apple Xcode/SDK and Google SDK separately.
+2. Relink using compiled-kit/relink.py as shown in RECIPIENT_README.txt. This
+   writes a new unsigned arm64 executable and result.json in a scratch folder.
+3. Assemble the resources into a new unsigned bundle:
+     python3 assemble_bundle.py --executable /scratch/relink/Geoclass-relinked \
+       --ads /path/to/GoogleMobileAdsSdkiOS-13.11.0 --output /scratch/unsigned
+   The output directory must not exist. No installed app is overwritten.
+4. In your own Xcode, sign in to your Apple account. Create a temporary iOS App
+   project with a separate Bundle ID you control, e.g. org.yourname.geoclassqt.
+   Enable automatic development signing for your team. Connect/trust/unlock
+   your device, enable Developer Mode as required, and build/run that temporary
+   app once. This lets Xcode create a development certificate/profile for your
+   identifier/device. Personal Team service/expiry limits apply; see Apple.
+5. Locate that temporary app's embedded.mobileprovision in Xcode's build product.
+   Keep it on your own Mac. List your signing certificate fingerprints:
+     security find-identity -v -p codesigning
+   Use the 40-character certificate SHA-1 (not a password/private key) matching
+   the profile. Do not send profiles, passwords or private keys to the publisher.
+6. Sign a NEW copy with the helper:
+     python3 sign_recipient_bundle.py --app /scratch/unsigned/Geoclass.app \
+       --profile /local/embedded.mobileprovision --identity YOUR_CERTIFICATE_SHA1 \
+       --bundle-id org.yourname.geoclassqt --output /scratch/signed
+   The helper verifies profile expiry, development/debug permission, identifier
+   and certificate membership before copying/signing. It refuses the original
+   app identifier and existing output paths. It writes no account settings and
+   does not install or upload. Its --help is available without credentials.
+7. Install on a device included in your profile with Xcode's Devices and
+   Simulators window (+ under Installed Apps), or:
+     xcrun devicectl device install app --device YOUR_DEVICE /scratch/signed/Geoclass.app
+   Launch from Home Screen; trust the development identity in device Settings
+   if required. Use synthetic data. The separately identified app has its own
+   sandbox; it does not replace the official app or its survey data.
+8. When your development profile expires, obtain a fresh profile through Xcode
+   and repeat signing/installation. A free Personal Team currently has seven-day
+   provisioning limits. Do not bypass code signing, reuse the publisher's App
+   Store signature or jailbreak a device as part of these instructions.
+
+SERVICE LIMITS
+StoreKit products and verified purchases belong to the original Apple app
+identity; a recipient's separate identity does not reproduce those entitlements.
+Network ads use the original client configuration: do not generate test traffic
+against live ads; start offline unless your device is properly registered for
+Google test ads. Satellite is disabled without a recipient-owned credential.
+These service limits must not be presented as a prohibition on modifying or
+running the LGPL library portions.
+
+VERIFICATION AND DISTRIBUTION SCOPE
+The publisher checks packaged inputs, a relocated unchanged-library relink and
+unsigned bundle assembly. No modified-Qt build/device QA is promised or required
+by the publisher's test plan. Recipients test their modifications themselves.
+The development signing helper has validation tests; no recipient certificate
+or modified-library phone installation was exercised by preparing this package.
+The sufficiency/applicability of installation information under LGPL 4(e) and
+GPL 6, and compatibility of the actual App Store/SDK/recipient terms, remain
+publisher distribution-review questions. These instructions do not certify them.
+
+Official Apple account/device instructions (checked 25 October 2026):
+https://developer.apple.com/help/account/basics/about-your-developer-account
+https://developer.apple.com/documentation/xcode/running-your-app-on-simulated-or-physical-devices

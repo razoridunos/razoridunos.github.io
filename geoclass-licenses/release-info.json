@@ -1,10 +1,10 @@
 {
-  "tag": "geoclass-ios-5.0.1-build-3",
+  "tag": "geoclass-ios-5.0.1-build-6",
   "publisher": "Edip Ahmet Taskin",
   "app_version": "5.0.1",
-  "app_build": "3",
+  "app_build": "6",
   "candidate_bundle_id": "org.project.geoclass",
-  "candidate_binary_sha256": "c209d59106ff2fcb5c0db20469e72122fef9003f0818d14fb7e105fa71b5e6b4",
+  "candidate_binary_sha256": "f87ba2db9da45f21da016836d2aba10b2a59821054b41a9f4700403285ff4018",
   "production_identity": true,
   "published": false,
   "files": [
@@ -12,23 +12,25 @@
       "file": "geoclass-ios-5.0.1-build-3-library-sources.tar",
       "bytes": 578457600,
       "sha256": "5b42f9acd9760ada17bc108e748b20839694d04f8d659dc6239fedc4cb197476",
-      "url": "https://github.com/razoridunos/razoridunos.github.io/releases/download/geoclass-ios-5.0.1-build-3/geoclass-ios-5.0.1-build-3-library-sources.tar"
+      "url": "https://github.com/razoridunos/razoridunos.github.io/releases/download/geoclass-ios-5.0.1-build-3/geoclass-ios-5.0.1-build-3-library-sources.tar",
+      "reused_from_tag": "geoclass-ios-5.0.1-build-3"
     },
     {
-      "file": "geoclass-ios-5.0.1-build-3-application-inputs.tar.gz",
-      "bytes": 69357400,
-      "sha256": "996be175494215a193d999f5249f803c73fa508ec70fc95d11c4dba215309c74",
-      "url": "https://github.com/razoridunos/razoridunos.github.io/releases/download/geoclass-ios-5.0.1-build-3/geoclass-ios-5.0.1-build-3-application-inputs.tar.gz"
+      "file": "geoclass-ios-5.0.1-build-6-application-inputs.tar.gz",
+      "bytes": 69436781,
+      "sha256": "4b6c680f1a021df7772fa9473957bf853ce8113ac4d9fea3ddf7a58d2af5545d",
+      "url": "https://github.com/razoridunos/razoridunos.github.io/releases/download/geoclass-ios-5.0.1-build-6/geoclass-ios-5.0.1-build-6-application-inputs.tar.gz"
     },
     {
-      "file": "geoclass-ios-5.0.1-build-3-instructions-notices.tar.gz",
-      "bytes": 244068,
-      "sha256": "5f0db3818b347d329347aff9b9dbd8de4da3672436d9ee414028a7500a12c519",
-      "url": "https://github.com/razoridunos/razoridunos.github.io/releases/download/geoclass-ios-5.0.1-build-3/geoclass-ios-5.0.1-build-3-instructions-notices.tar.gz"
+      "file": "geoclass-ios-5.0.1-build-6-instructions-notices.tar.gz",
+      "bytes": 244048,
+      "sha256": "f0e86abefbbdf8f3cc739d08c6921891fa27a1e60ac18bf1018d8390536c7aa5",
+      "url": "https://github.com/razoridunos/razoridunos.github.io/releases/download/geoclass-ios-5.0.1-build-6/geoclass-ios-5.0.1-build-6-instructions-notices.tar.gz"
     }
   ],
   "qt_source_archives": 10,
   "native_source_files": 50169,
   "compiled_inputs": 245,
-  "limits": "Local package, not a signed archive or legal approval. Regenerate from the final distributed binary. No modified-Qt QA or website publication."
+  "limits": "Local package, not a signed archive or legal approval. Regenerate from the final distributed binary. No modified-Qt QA or website publication.",
+  "shared_library_archive": "Byte-identical library snapshot reused from the public build-3 release; application inputs/notices are build 6."
 }

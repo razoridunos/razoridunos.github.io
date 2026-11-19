@@ -1,14 +1,14 @@
 GEOCLASS iOS LIBRARY BUILD INFORMATION
 
 TARGET
-iOS device arm64, deployment target 17.0; Qt 6.10.3 static; C++17 application;
+iOS device arm64, deployment target 18.0; Qt 6.12.0 static; C++17 application;
 MapLibre Metal backend. macOS is an internal test target, not this release.
-The candidate was built with Xcode 27.1 (27A9275), iPhoneOS SDK 27.1. Those
+The candidate was built with Xcode 27.2 (27B52), iPhoneOS SDK 27.2. Those
 compiler versions are candidate provenance, not a promise about arbitrary SDKs.
 Recipient must obtain Xcode/Apple SDKs under Apple's terms separately.
 
 QT
-sources/qt contains original Qt 6.10.3 submodule archives and their inventory.
+sources/qt contains original Qt 6.12.0 submodule archives and their inventory.
 Extract each into its own source directory. qtbase/configure and each module's
 configure.cmake/CMakeLists.txt are supplied in the archives. Installed records
 include config_<module>.opt, config_<module>.summary, qconfig.pri, qmodule.pri
@@ -17,11 +17,11 @@ paste: /Users/qt/... paths, sccache and upstream SBOM tooling refer to Qt's CI.
 Substitute your local paths; do not create that user's directories.
 
 For an iOS source build follow Qt's platform instructions:
-https://doc.qt.io/qt-6.10/ios-building-from-source.html
-https://doc.qt.io/qt-6.10/configure-options.html
+https://doc.qt.io/qt-6.12/ios-building-from-source.html
+https://doc.qt.io/qt-6.12/configure-options.html
 
-Supply a Qt 6.10.3 macOS host-tools installation via QT_HOST_PATH. Configure
-qtbase with the iOS toolchain, static libraries, device arm64, deployment 17.0,
+Supply a Qt 6.12.0 macOS host-tools installation via QT_HOST_PATH. Configure
+qtbase with the iOS toolchain, static libraries, device arm64, deployment 18.0,
 and a separate install prefix. Configure the dependent source modules against
 that qtbase using its bin/qt-configure-module, then cmake --build / --install.
 Use the supplied installed configuration summaries to match features, private
@@ -42,7 +42,7 @@ The source layout is:
   Geoclass/build/apple/downloads/tiff-4.7.2.tar.xz
 
 From the extracted Geoclass directory:
-  export GEOCLASS_QT_ROOT=/path/to/Qt/6.10.3
+  export GEOCLASS_QT_ROOT=/path/to/Qt/6.12.0
   bash tools/build_apple_proj_with_grids.sh ios-device-arm64
   bash tools/build_apple_maplibre.sh ios-device-arm64
 

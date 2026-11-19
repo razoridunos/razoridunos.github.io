@@ -47,6 +47,9 @@ App Store listing and does not transfer its purchase entitlements.
    Store signature or jailbreak a device as part of these instructions.
 
 SERVICE LIMITS
+Lifetime purchasing is disabled in Geoclass 5.1.2. The rewarded two-hour
+ad-free option remains. The following StoreKit note concerns future enabled
+purchasing configurations.
 StoreKit products and verified purchases belong to the original Apple app
 identity; a recipient's separate identity does not reproduce those entitlements.
 Network ads use the original client configuration: do not generate test traffic
